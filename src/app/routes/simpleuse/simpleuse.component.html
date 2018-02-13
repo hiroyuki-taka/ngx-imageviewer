@@ -15,6 +15,10 @@
     <label>Samples URLs: </label>
     <button *ngFor="let s of samples; let i = index" (click)="imageSrc = s.url">{{ s.label }}</button>
   </div>
+  <div>
+    cached images: {{cacheImageCount}}
+    <button (click)="clearCache()">clear image cache</button>
+  </div>
 </div>
 
 <ngx-imageviewer [src]="imageSrc" [width]="canvasWidth" [height]="canvasHeight"></ngx-imageviewer>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
+import {ImageCacheService} from '../../imageviewer';
 
 @Component({
   selector: 'ngx-simpleuse',
@@ -20,5 +21,17 @@ export class SimpleUseComponent {
   canvasHeight = 600;
   imageSrc = this.samples[0].url;
 
-  constructor() { }
+  constructor(
+    @Inject(ImageCacheService) private cacheService: ImageCacheService
+  ) {
+    this.cacheService = cacheService;
+  }
+
+  get cacheImageCount(): number {
+    return this.cacheService.cache.length;
+  }
+
+  clearCache() {
+    this.cacheService.disposeCache();
+  }
 }
