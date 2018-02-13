@@ -24,7 +24,6 @@ export class SimpleUseComponent {
   constructor(
     @Inject(ImageCacheService) private cacheService: ImageCacheService
   ) {
-    this.cacheService = cacheService;
   }
 
   get cacheImageCount(): number {
